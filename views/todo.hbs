@@ -1,0 +1,29 @@
+<div>
+  <h3>
+    List Todo
+  </h3>
+  <div style="margin: 1em">
+    <form action="/todo/add" method="post">
+      <label>
+        <input type="text" name="task" placeholder="add Todo">
+      </label>
+      <input type="submit" value="Add">
+    </form>
+  </div>
+
+  <ul>
+    {{#each list}}
+      <li>
+        {{#if isComplete}}
+          <del>{{task}}</del>
+        {{else}}
+          <span>{{task}}</span>
+        {{/if}}
+      </li>
+      <span>
+        <a href="/todo/reverse-complete?index={{@index}}" class="complete">Complete</a>
+        <a href="/todo/remove?index={{@index}}" class="delete">Delete</a>
+      </span>
+    {{/each}}
+  </ul>
+</div>
